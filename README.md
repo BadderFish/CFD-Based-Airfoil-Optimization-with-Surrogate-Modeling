@@ -33,7 +33,23 @@ These failures are due to known XFOIL boundary layer convergence limitations.
 - scikit-learn
 
 ## Project Status
+- Checkpoint 1 complete: XFOIL automated sweep pipeline (13/15 runs converged)
+- Checkpoint 2 complete: GP surrogate model trained and validated (Cl RMSE=0.0184, Cd RMSE=0.0013)
+- Checkpoint 3 complete: Surrogate-based optimizer found maximum L/D condition
 
-- **Checkpoint 1 complete**: XFOIL automated sweep pipeline (13/15 runs converged)
-- **Checkpoint 2 complete**: GP surrogate model trained and validated
-- **Optional next step**: surrogate-based optimizer using scipy.optimize to find max L/D condition
+## Optimization Result
+- Optimal AoA: 4.654 degrees
+- Optimal Reynolds number: 2,000,000
+- Predicted maximum L/D: 115.754
+- Predicted Cl: 0.7608
+- Predicted Cd: 0.00657
+- Method: scipy.optimize L-BFGS-B minimizing negative L/D, run from 6 starting points to avoid local minima
+- Result is physically consistent with known NACA 2412 aerodynamic behaviour - peak efficiency occurs at moderate angle of attack where lift is substantial but drag has not yet accelerated toward stall
+
+## File Structure
+- xfoil_runner.py — automated XFOIL parameter sweep
+- surrogate_model.py — Gaussian Process surrogate training and validation
+- optimizer.py — surrogate-based optimizer for maximum L/D
+- sweep_results.csv — raw XFOIL output dataset (13 runs)
+- surrogate_surface.png — Cl, Cd, L/D surrogate surface plots with validation points
+- optimizer_result.png — L/D contour map with optimal point and L/D vs AoA curve
