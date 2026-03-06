@@ -1,0 +1,8 @@
+# XFOIL temporary and intermediate files
+polar.txt
+xfoil_input.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
